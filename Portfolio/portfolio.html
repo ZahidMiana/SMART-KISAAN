@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - Smart Kisaan</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-tractor me-2"></i> My Portfolio
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#portfolioNav" aria-controls="portfolioNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="portfolioNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary ms-2" href="resume.doc" download aria-label="Download Resume">Resume</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link btn btn-outline-secondary ms-2" id="theme-toggle" aria-label="Toggle Theme">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section d-flex align-items-center text-center">
+        <div class="container">
+            <h1 class="display-4 animate__animated animate__fadeIn">Welcome to My Portfolio</h1>
+            <p class="lead typing-effect">I’m Zahid Iqbal, a passionate farmer and tech enthusiast contributing to Smart Kisaan.</p>
+            <a href="#projects" class="btn btn-primary mt-3 animate__animated animate__zoomIn">View My Work</a>
+            <div class="social-links mt-4">
+                <a href="https://github.com/ZahidMiana" class="text-white me-3" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/zahid-iqbal-a18498257" class="text-white me-3" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/zahidmiana67/" class="text-white" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 animate-on-scroll">
+        <div class="container">
+            <h2 class="text-center mb-4">About Me</h2>
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center">
+                    <img src="zahid.png" alt="Profile Picture" class="rounded-circle mb-3">
+                </div>
+                <div class="col-md-8">
+                    <p>
+                        I’m Zahid Iqbal — a dedicated farmer with a strong passion for technology and innovation.
+                        With roots in agriculture and a drive to explore tech, I’m bridging the gap between the field and the future.
+                        As a Full Stack Developer, I build user-friendly and efficient web applications using modern tools like React, Node.js, and MongoDB.
+                        I’m also stepping into the world of Blockchain, learning about smart contracts, decentralized apps, and Web3.
+                        My goal is to bring tech-driven solutions to real-world farming challenges.
+                        Through platforms like Smart Kisaan, I aim to empower farmers with data, tools, and access to better markets.
+                        I believe technology can transform traditional practices and create lasting impact in rural communities.
+                        Curious, committed, and always learning — I’m growing in code just like I grow in the field.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-5 bg-light animate-on-scroll">
+        <div class="container">
+            <h2 class="text-center mb-5">My Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="timeline-content">
+                        <h5>2024 </h5>
+                        <h4>Lead Developer at Smart Kisaan</h4>
+                        <p>Developed and maintained the Smart Kisaan platform, integrating weather APIs, AI assistants, and market price tools for farmers.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-tractor"></i></div>
+                    <div class="timeline-content">
+                        <h5>2023 - Present </h5>
+                        <h4>Full Stack Developer</h4>
+                        <p>I’m a passionate Full Stack Developer skilled in building dynamic, responsive, and user-friendly web applications. With a strong foundation in both front-end and back-end technologies, I specialize in creating seamless digital experiences using tools like React, Node.js, Express, and MongoDB. I enjoy turning complex problems into simple, elegant solutions and continuously strive to learn and grow in the evolving tech landscape..</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="timeline-content">
+                        <h5>2025</h5>
+                        <h4>Block Chain Development</h4>
+                        <p>I'm currently in the learning phase of my journey as a Blockchain Developer, exploring the foundations of decentralized technologies, smart contracts, and Web3. With a background in full stack web development, I'm now diving into how blockchain can transform the way we build secure, transparent, and trustless applications. Step by step, I’m learning tools like Solidity, Ethereum, and smart contract development—excited to be part of the future of technology..</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5 bg-light animate-on-scroll">
+        <div class="container">
+            <h2 class="text-center mb-4">My Projects</h2>
+            <!-- Filter Buttons -->
+            <div class="text-center mb-4">
+                <button class="btn btn-outline-primary filter-btn active" data-filter="all">All</button>
+                <button class="btn btn-outline-primary filter-btn" data-filter="farming">Farming</button>
+                <button class="btn btn-outline-primary filter-btn" data-filter="tech">Tech</button>
+            </div>
+            <!-- Project Cards -->
+            <div class="row project-gallery">
+                <div class="col-md-4 mb-4 project-card" data-category="farming">
+                    <div class="card">
+                        <img src="wheat.jpg" class="card-img-top" alt="Farming Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Organic Wheat Farming</h5>
+                            <p class="card-text">Implemented sustainable farming techniques to increase wheat yield by 20%.</p>
+                            <button class="btn btn-sm btn-outline-primary view-details" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="wheat">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 project-card" data-category="tech">
+                    <div class="card">
+                        <img src="weather.jpg" class="card-img-top" alt="Tech Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Smart Kisaan Weather Tool</h5>
+                            <p class="card-text">Developed a weather forecasting tool for farmers using OpenWeatherMap API.</p>
+                            <button class="btn btn-sm btn-outline-primary view-details" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="weather">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 project-card" data-category="farming">
+                    <div class="card">
+                        <img src="drip.jpg" class="card-img-top" alt="Farming Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Drip Irrigation System</h5>
+                            <p class="card-text">Designed a cost-effective drip irrigation system for small-scale farmers.</p>
+                            <button class="btn btn-sm btn-outline-primary view-details" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="irrigation">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="projectModalLabel">Project Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="modal-project-image" src="" class="img-fluid mb-3" alt="Project Image">
+                    <h4 id="modal-project-title"></h4>
+                    <p id="modal-project-description"></p>
+                    <p><strong>Technologies Used:</strong> <span id="modal-project-tech"></span></p>
+                    <p><strong>Outcome:</strong> <span id="modal-project-outcome"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5 animate-on-scroll">
+        <div class="container">
+            <h2 class="text-center mb-4">My Skills</h2>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label data-bs-toggle="tooltip" data-bs-placement="top" title="Expertise in organic farming and crop rotation">
+                        <i class="fas fa-leaf me-2"></i> Farming Techniques
+                    </label>
+                    <div class="progress">
+                        <div class="progress-bar bg-success animate-progress" style="width: 90%;">90%</div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label data-bs-toggle="tooltip" data-bs-placement="top" title="Proficient in HTML, CSS, JavaScript, and APIs">
+                        <i class="fas fa-code me-2"></i> Full Stack Development 
+                    </label>
+                    <div class="progress">
+                        <div class="progress-bar bg-info animate-progress" style="width: 85%;">85%</div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label data-bs-toggle="tooltip" data-bs-placement="top" title="Integrated tech solutions like IoT in farming">
+                        <i class="fas fa-microchip me-2"></i> Basics Of Block Chain
+                    </label>
+                    <div class="progress">
+                        <div class="progress-bar bg-warning animate-progress" style="width: 80%;">80%</div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label data-bs-toggle="tooltip" data-bs-placement="top" title="Analyzed crop data to optimize yields">
+                        <i class="fas fa-chart-line me-2"></i> Problem Solver
+                    </label>
+                    <div class="progress">
+                        <div class="progress-bar bg-danger animate-progress" style="width: 70%;">70%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements" class="py-5 bg-light animate-on-scroll">
+    <div class="container">
+        <h2 class="text-center mb-5">Achievements</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="achievement-card text-center">
+                    <i class="fas fa-laptop-code fa-3x mb-3 text-success"></i>
+                    <h5>Full Stack Development</h5>
+                    <p>Developed end-to-end web applications, including the Smart Kisaan platform, using modern tech stacks.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="achievement-card text-center">
+                    <i class="fas fa-link fa-3x mb-3 text-success"></i>
+                    <h5>Basics of Blockchain</h5>
+                    <p>Completed a course on blockchain fundamentals, exploring decentralized solutions for agriculture.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="achievement-card text-center">
+                    <i class="fas fa-certificate fa-3x mb-3 text-success"></i>
+                    <h5>Certified in Development</h5>
+                    <p>Earned a certification in Full Stack Development from [Institute Name] in 2024.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5 animate-on-scroll">
+        <div class="container">
+            <h2 class="text-center mb-5">What Others Say</h2>
+            <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-card text-center">
+                            <img src="alizeh.png" alt="Client 1" class="rounded-circle mb-3">
+                            <p>"Smart Kisaan transformed our farming practices with innovative tech solutions. Highly recommend!"</p>
+                            <h5>Alizeh, Farmer</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card text-center">
+                            <img src="maser.png" alt="Client 2" class="rounded-circle mb-3">
+                            <p>"The Smart Kisaan platform has been a game-changer for accessing market prices and weather data."</p>
+                            <h5>Simba Maser, Agripreneur</h5>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light animate-on-scroll">
+        <div class="container">
+            <h2 class="text-center mb-5">Get in Touch</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="contact-form">
+                        <div class="mb-3">
+                            <label for="contact-name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="contact-name" placeholder="Enter your name" aria-describedby="nameHelp">
+                            <div id="nameHelp" class="invalid-feedback">Please enter your name.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contact-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="contact-email" placeholder="Enter your email" aria-describedby="emailHelp">
+                            <div id="emailHelp" class="invalid-feedback">Please enter a valid email.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contact-message" class="form-label">Message</label>
+                            <textarea class="form-control" id="contact-message" rows="4" placeholder="Your message" aria-describedby="messageHelp"></textarea>
+                            <div id="messageHelp" class="invalid-feedback">Please enter your message.</div>
+                        </div>
+                        <button type="button" class="btn btn-primary w-100" id="contact-submit">Send Message</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h5>Contact Details</h5>
+                    <p><i class="fas fa-envelope me-2"></i> zahidmiana56@gmail.com</p>
+                    <p><i class="fas fa-phone me-2"></i> +92 3085897061</p>
+                    <h5>Location</h5>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509371!2d144.9537353153167!3d-37.81627927975186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d9c8b9b9c8f1!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1697654321987!5m2!1sen!2sus" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" aria-label="Map showing location in Melbourne, Australia"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p>© 2025 Zahid Iqbal. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/ZahidMiana" class="text-white me-3" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/zahid-iqbal-a18498257" class="text-white me-3" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/zahidmiana67/" class="text-white" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="btn btn-primary" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="portfolio.js"></script>
+</body>
+</html>

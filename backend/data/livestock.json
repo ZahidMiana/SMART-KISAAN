@@ -1,0 +1,213 @@
+[
+    {
+        "id": 1,
+        "type": "Cow",
+        "average_price": 150000,
+        "health_tip": "Ensure regular vaccination against foot-and-mouth disease.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 2,
+        "type": "Goat",
+        "average_price": 25000,
+        "health_tip": "Provide clean water and avoid overcrowding to prevent infections.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 3,
+        "type": "Chicken",
+        "average_price": 800,
+        "health_tip": "Maintain proper ventilation in coops to reduce respiratory issues.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 4,
+        "type": "Sheep",
+        "average_price": 30000,
+        "health_tip": "Regularly check for parasites and provide a balanced diet.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 5,
+        "type": "Buffalo",
+        "average_price": 200000,
+        "health_tip": "Ensure access to clean water and protect from extreme heat.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 6,
+        "type": "Pig",
+        "average_price": 15000,
+        "health_tip": "Vaccinate against swine fever and maintain hygiene.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 7,
+        "type": "Duck",
+        "average_price": 600,
+        "health_tip": "Provide a clean pond for swimming to reduce stress.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 8,
+        "type": "Horse",
+        "average_price": 250000,
+        "health_tip": "Regular hoof care and exercise are essential.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 9,
+        "type": "Turkey",
+        "average_price": 1200,
+        "health_tip": "Protect from cold weather and ensure a protein-rich diet.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 10,
+        "type": "Rabbit",
+        "average_price": 500,
+        "health_tip": "Keep cages clean and provide fresh vegetables daily.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 11,
+        "type": "Camel",
+        "average_price": 300000,
+        "health_tip": "Provide shade and adequate hydration in hot climates.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 12,
+        "type": "Donkey",
+        "average_price": 50000,
+        "health_tip": "Regular dental checks and hoof trimming are important.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 13,
+        "type": "Quail",
+        "average_price": 250,
+        "health_tip": "Keep in dry, well-ventilated cages to prevent infections.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 14,
+        "type": "Emu",
+        "average_price": 40000,
+        "health_tip": "Ensure fencing is secure to prevent escapes and injuries.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 15,
+        "type": "Ostrich",
+        "average_price": 80000,
+        "health_tip": "Provide open space for movement and strong fencing.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 16,
+        "type": "Yak",
+        "average_price": 180000,
+        "health_tip": "Groom regularly and shelter from extreme cold.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 17,
+        "type": "Alpaca",
+        "average_price": 160000,
+        "health_tip": "Shear annually and monitor for fleece rot.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 18,
+        "type": "Llama",
+        "average_price": 170000,
+        "health_tip": "Vaccinate against clostridial diseases and provide open pasture.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 19,
+        "type": "Pigeon",
+        "average_price": 200,
+        "health_tip": "Ensure clean lofts and treat for mites regularly.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 20,
+        "type": "Peacock",
+        "average_price": 10000,
+        "health_tip": "Provide perch areas and protect from predators.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 21,
+        "type": "Guinea Fowl",
+        "average_price": 900,
+        "health_tip": "Keep flocks small and ensure dust baths.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 22,
+        "type": "Silkie Chicken",
+        "average_price": 1500,
+        "health_tip": "Protect from wet environments and predators.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 23,
+        "type": "Zebu",
+        "average_price": 130000,
+        "health_tip": "Vaccinate regularly and check for tick infestations.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 24,
+        "type": "Reindeer",
+        "average_price": 210000,
+        "health_tip": "Provide antler care and supplement with minerals.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 25,
+        "type": "Yak-Cow Hybrid",
+        "average_price": 200000,
+        "health_tip": "Suitable for high altitudes; ensure proper grazing.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 26,
+        "type": "Miniature Pig",
+        "average_price": 18000,
+        "health_tip": "Limit diet to avoid obesity and provide enrichment toys.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 27,
+        "type": "Kangaroo",
+        "average_price": 300000,
+        "health_tip": "Needs large enclosures and protection from cold.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 28,
+        "type": "Ferret",
+        "average_price": 3500,
+        "health_tip": "Vaccinate against rabies and provide interactive environments.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 29,
+        "type": "Parrot",
+        "average_price": 8000,
+        "health_tip": "Avoid smoke exposure and offer fresh fruits daily.",
+        "last_updated": "2025-04-15"
+    },
+    {
+        "id": 30,
+        "type": "Bee Colony",
+        "average_price": 10000,
+        "health_tip": "Check for mites and avoid pesticide exposure.",
+        "last_updated": "2025-04-15"
+    }
+
+]

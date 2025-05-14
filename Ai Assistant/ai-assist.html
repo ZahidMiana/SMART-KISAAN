@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ai Assistant</title>
+</head>
+<body>
+    <div class="ai-sidebar" id="aiSidebar">
+        <div class="ai-sidebar-header">
+            <h4>AI Farming Assistant</h4>
+            <button class="btn btn-close btn-close-white" id="closeAiSidebar"></button>
+        </div>
+        <div class="ai-sidebar-body">
+            <div class="ai-chat" id="aiChat"></div>
+            <div class="ai-input">
+                <input type="text" id="aiQueryInput" placeholder="Ask about farming (e.g., crop advice, disease)...">
+                <button class="btn btn-primary" id="aiSendBtn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+            <div class="api-key-section" id="apiKeySection">
+                <input type="text" id="apiKeyInput" placeholder="Enter your Gemini API Key" required>
+                <button class="btn btn-success" id="saveApiKeyBtn">Save Key</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

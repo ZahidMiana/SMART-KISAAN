@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Kisaan - AI-Powered Farming Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/Modal/modal.css">
+    <link rel="stylesheet" href="/Ai Assistant/ai-assist.css">
+
+    <style>
+        .auth-card-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .auth-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+        }
+        .auth-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+        .auth-close-btn:hover {
+            color: #ff0000;
+        }
+        .auth-form h5 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-label {
+            font-weight: 500;
+        }
+        .form-control {
+            border-radius: 5px;
+        }
+        .btn-primary {
+            border-radius: 5px;
+        }
+        .toggle-form {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .toggle-form:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <style>
+        /* [Existing styles remain unchanged] */
+        .market-data-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .market-data-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+        .market-data-card p {
+            margin: 5px 0;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="assets/images/logo.png" alt="Smart Kisaan Logo" height="50"> Smart Kisaan
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#market">Market Prices</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#weather">Weather</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#diseases">Diseases</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#ai-assistant" id="aiToggle">AI Assist</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-globe"></i> English
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item language-option" href="#" data-lang="en">English</a></li>
+                            <li><a class="dropdown-item language-option" href="#" data-lang="ur">Urdu</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="toggle-auth-card" href="#" style="display: block;">Login</a>
+                        <div id="user-info" class="nav-link d-none">
+                            <span id="user-name"></span>
+                            <button id="logout-btn" class="btn btn-link p-0 ms-2">Logout</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!-- Authentication Card -->
+<div class="auth-card-container" id="auth-card-container" style="display: none;">
+    <div class="auth-card">
+        <button class="auth-close-btn" id="close-auth-card">&times;</button>
+        <!-- Login Form -->
+        <div id="login-form" class="auth-form">
+            <h5 class="text-center">Login to Smart Kisaan</h5>
+            <div class="mb-3">
+                <label for="login-email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="login-email" placeholder="Enter email">
+            </div>
+            <div class="mb-3">
+                <label for="login-password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="login-password" placeholder="Password">
+            </div>
+            <button type="button" class="btn btn-primary w-100 mb-3" id="login-btn">Login</button>
+            <p class="text-center">
+                <a href="#" class="toggle-form" data-form="signup">Don't have an account? Sign Up</a>
+            </p>
+            <p class="text-center">
+                <a href="#" class="toggle-form" data-form="forgot">Forgot Password?</a>
+            </p>
+        </div>
+        <!-- Sign Up Form -->
+        <div id="signup-form" class="auth-form" style="display: none;">
+            <h5 class="text-center">Sign Up for Smart Kisaan</h5>
+            <div class="mb-3">
+                <label for="signup-name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="signup-name" placeholder="Enter your name">
+            </div>
+            <div class="mb-3">
+                <label for="signup-email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="signup-email" placeholder="Enter email">
+            </div>
+            <div class="mb-3">
+                <label for="signup-password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="signup-password" placeholder="Password">
+            </div>
+            <button type="button" class="btn btn-primary w-100 mb-3" id="signup-btn">Sign Up</button>
+            <p class="text-center">
+                <a href="#" class="toggle-form" data-form="login">Already have an account? Login</a>
+            </p>
+        </div>
+        <!-- Forgot Password Form -->
+        <div id="forgot-form" class="auth-form" style="display: none;">
+            <h5 class="text-center">Forgot Password</h5>
+            <div class="mb-3">
+                <label for="forgot-email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="forgot-email" placeholder="Enter email">
+            </div>
+            <button type="button" class="btn btn-primary w-100 mb-3" id="forgot-btn">Reset Password</button>
+            <p class="text-center">
+                <a href="#" class="toggle-form" data-form="login">Back to Login</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Hero Section with Custom Slider -->
+<section class="hero-section" id="home">
+    <div class="container">
+        <div class="slider">
+            <div class="slides">
+                <!-- Slide 1 -->
+                <div class="slide active">
+                    <div class="row">
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <h1>Empowering Farmers with Smart Solutions</h1>
+                            <p class="lead">Revolutionize your farming with real-time tools, AI advice, and insights in English and Urdu.</p>
+                            <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                                <a href="#features" class="btn btn-primary">Explore Features</a>
+                                <a href="https://youtu.be/_tijHjup-gM?si=6Xxahm4pp4-y9_qI" class="btn btn-outline-primary">Watch Demo</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 text-center">
+                            <img src="assets/images/hero1.jpg" alt="Farmers harvesting with tractor" class="hero-image">
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <div class="row">
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <h1>Traditional Farming, Modern Insights</h1>
+                            <p class="lead">Blend traditional methods with AI-driven analytics to boost productivity.</p>
+                            <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                                <a href="#features" class="btn btn-primary">Get Started</a>
+                                <a href="https://farmingthing.com/traditional-farming-vs-modern-farming-difference/#:~:text=This%20article%20compares%20traditional%20and%20modern%20farming%20and,has%20been%20the%20backbone%20of%20agriculture%20for%20centuries." class="btn btn-outline-primary">Learn More</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 text-center">
+                            <img src="assets/images/hero2.jpg" alt="Oxen pulling cart" class="hero-image">
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <div class="row">
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <h1>Maximize Crop Yields</h1>
+                            <p class="lead">Optimize harvesting with data-driven tools for sustainable farming.</p>
+                            <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                                <a href="#features" class="btn btn-primary">Discover More</a>
+                                <a href="https://www.farmstandapp.com/3688/increase-crop-yield-techniques/" class="btn btn-outline-primary">See Benefits</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 text-center">
+                            <img src="assets/images/hero3.jpg" alt="Farmers harvesting crops" class="hero-image">
+                        </div>
+                    </div>
+                </div>
+           
+               <!-- Slide 4 -->
+               <div class="slide">
+                <div class="row">
+                    <div class="col-lg-6 text-center text-lg-start">
+                        <h1>Maximize Your Wheat With Us</h1>
+                        <p class="lead">Optimize harvesting with data-driven tools for sustainable farming.</p>
+                        <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                            <a href="#features" class="btn btn-primary">Discover More</a>
+                            <a href="https://www.westtexaslivestockgrowers.com/how-to-actually-maximize-grazing-with-wheat-pastures/" class="btn btn-outline-primary">See Benefits</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <img src="assets/images/hero4.jpg" alt="Farmers harvesting crops" class="hero-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!-- Slider Controls -->
+            <!-- <button class="slider-prev">&larr;</button>
+            <button class="slider-next">&rarr;</button> -->
+            <!-- Slider Indicators -->
+            <!-- <div class="slider-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+            </div> -->
+        </div>
+    </div>
+</section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 data-lang="features-title">Our Features</h2>
+                <p class="lead" data-lang="features-text">Boost productivity and make informed decisions with our smart tools.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+                        <h3>Market Prices</h3>
+                        <p>Track prices for crops and livestock across Pakistan.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <div class="icon-box"><i class="fas fa-cloud-sun"></i></div>
+                        <h3>Weather Updates</h3>
+                        <p>Get accurate forecasts and alerts for your farm.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <div class="icon-box"><i class="fas fa-bug"></i></div>
+                        <h3>Disease Info</h3>
+                        <p>Identify and prevent crop diseases with expert resources.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card">
+                        <div class="icon-box"><i class="fas fa-robot"></i></div>
+                        <h3>AI Assistant</h3>
+                        <p>Receive personalized farming advice instantly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 data-lang="testimonials-title">What Our Farmers Say</h2>
+                <p class="lead" data-lang="testimonials-text">Hear from farmers who have transformed their practices with Smart Kisaan.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card text-center">
+                        <img src="assets/images/farmer-1.jpg" alt="Farmer 1" class="rounded-circle mb-3" width="100">
+                        <h5>Ali Khan</h5>
+                        <p class="text-muted">Wheat Farmer, Punjab</p>
+                        <p>"Smart Kisaan's AI assistant helped me optimize my irrigation schedule, increasing my yield by 20%!"</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card text-center">
+                        <img src="assets/images/farmer-2.jpg" alt="Farmer 2" class="rounded-circle mb-3" width="100">
+                        <h5>Saba Ahmed</h5>
+                        <p class="text-muted">Vegetable Farmer, Sindh</p>
+                        <p>"The market price updates are a game-changer. I now sell my crops at the best rates."</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card text-center">
+                        <img src="assets/images/farmer-3.jpg" alt="Farmer 3" class="rounded-circle mb-3" width="100">
+                        <h5>Usman Malik</h5>
+                        <p class="text-muted">Livestock Farmer, Balochistan</p>
+                        <p>"The weather forecasts are accurate and help me plan my grazing schedules effectively."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Market Prices Section -->
+<section id="market-prices" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Market Prices</h2>
+        <div class="text-center mb-4">
+            <button class="toggle-btn btn btn-primary me-2" data-type="crop">Crops</button>
+            <button class="toggle-btn btn btn-outline-primary" data-type="livestock">Livestock</button>
+        </div>
+        <div id="market-data" class="row"></div>
+        <nav aria-label="Market prices pagination">
+            <ul id="pagination" class="pagination justify-content-center mt-4"></ul>
+        </nav>
+    </div>
+</section>
+
+ <!-- Weather Updates Section -->
+<section class="weather-section" id="weather">
+    <div class="container">
+        <h2 class="text-center mb-4">Weather Updates</h2>
+        <!-- Search Form -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" id="city-search" class="form-control" placeholder="Enter city (e.g., Karachi, Lahore, New York)" aria-label="City search">
+                    <button class="btn btn-primary" id="search-weather">Search</button>
+                </div>
+                <small id="weather-error" class="text-danger d-none">City not found. Please try again.</small>
+            </div>
+        </div>
+
+        <!-- Weather Display -->
+        <div class="row" id="weather-display" style="display: none;">
+            <!-- Current Weather -->
+            <div class="col-md-4">
+                <div class="weather-current card p-3 text-center">
+                    <h3 id="city-name">Karachi</h3>
+                    <img id="weather-icon" src="" alt="Weather icon" class="weather-icon mx-auto">
+                    <div class="temperature" id="temperature">Loading...</div>
+                    <div class="condition" id="condition">-</div>
+                </div>
+            </div>
+            <!-- Weather Stats -->
+            <div class="col-md-4">
+                <div class="weather-stats card p-3">
+                    <div class="stat-item">
+                        <i class="fas fa-tint"></i>
+                        <span id="humidity">-</span>
+                        <small>Humidity</small>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-wind"></i>
+                        <span id="wind-speed">-</span>
+                        <small>Wind Speed</small>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-cloud-rain"></i>
+                        <span id="precipitation">-</span>
+                        <small>Precipitation</small>
+                    </div>
+                </div>
+            </div>
+            <!-- Additional Info -->
+            <div class="col-md-4">
+                <div class="weather-info card p-3">
+                    <p><strong>Feels Like:</strong> <span id="feels-like">-</span></p>
+                    <p><strong>Pressure:</strong> <span id="pressure">-</span></p>
+                    <p><strong>Last Updated:</strong> <span id="last-updated">-</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Disease Information Section -->
+    <section id="diseases" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 data-lang="diseases-title">Crop Disease Information</h2>
+                <p class="lead" data-lang="diseases-text">Protect your crops with expert knowledge.</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="disease-card">
+                        <h4>Early Blight (Tomato)</h4>
+                        <p><strong>Symptoms:</strong> Dark spots with concentric rings on leaves, yellowing, and fruit rot.</p>
+                        <p><strong>Prevention:</strong> Crop rotation, proper spacing, and fungicides.</p>
+                    </div>
+                    <div class="disease-card">
+                        <h4>Rust (Wheat)</h4>
+                        <p><strong>Symptoms:</strong> Orange pustules on leaves, reduced photosynthesis.</p>
+                        <p><strong>Prevention:</strong> Resistant varieties, timely fungicide application.</p>
+                    </div>
+                    <div class="disease-card">
+                        <h4>Smut (Sugarcane)</h4>
+                        <p><strong>Symptoms:</strong> Black whip-like structures, stunted growth.</p>
+                        <p><strong>Prevention:</strong> Healthy seed canes, hot water treatment.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="resources-section">
+                        <h3>Resources</h3>
+                        <div class="resource-card">
+                            <h5>Articles</h5>
+                            <ul>
+                                <li><a href="https://extensionpubs.unl.edu/publication/g2180/na/html/view">Guide to Managing Wheat Rust</a></li>
+                                <li><a href="https://www.epicgardening.com/early-blight-tomatoes/">Preventing Early Blight in Tomatoes</a></li>
+                                <li><a href="https://www.gardeningchannel.com/organic-pest-control-methods/">Organic Pest Control Methods</a></li>
+                            </ul>
+                        </div>
+                        <div class="resource-card">
+                            <h5>Videos</h5>
+                            <ul>
+                                <li><a href="https://www.youtube.com/watch?v=EVP4YTTRTjc&t=40s&ab_channel=AnnaNirmataDivyarajKotkar">Video on Early Blight Prevention</a></li>
+                                <li><a href="https://www.youtube.com/watch?v=V-vBsVN4v0A&ab_channel=Dr.MohammadSajjad-CorporateFarming">Managing Wheat Rust</a></li>
+                                <li><a href="https://www.youtube.com/watch?v=dWTRUA3G5E8&ab_channel=%D8%B2%D8%B1%D8%B9%DB%8C%D9%85%D8%B4%D9%88%D8%B1%DB%92">Sugarcane Disease Control</a></li>
+                            </ul>
+                        </div>
+                        <div class="resource-card">
+                            <h5>Books</h5>
+                            <ul>
+                                <li><a href="https://www.ebay.com/sch/i.html?_nkw=plant+phathology+agrios&norover=1&mkevt=1&mkrid=711-153677-323661-0&mkcid=2&mkscid=102&keyword=Fashion,SRP&crlp=_&MT_ID=&geo_id=&rlsatarget=dat-2329177944879370:loc-144&adpos=&device=c&mktype=&loc=142691&poi=&abcId=&cmpgn=603518120&sitelnk=&adgroupid=1238051104528588&network=o&matchtype=b&msclkid=c8724e2f08271b857c9129d0f75e3f9a">Plant Pathology by George N. Agrios</a></li>
+                                <li><a href="https://pdfs.semanticscholar.org/8b17/6f7c983f6726d497e4eaf357695f1b591882.pdf">Diseases of Field Crops in Pakistan</a></li>
+                                <li><a href="https://search.yahoo.com/search?fr=mcafee&type=E210US91215G0&p=Integrated+Pest+Management+Guide">Integrated Pest Management Guide</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- FAQ Section -->
+<section class="faq-section py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4 text-success">Frequently Asked Questions</h2>
+        <div class="faq-list">
+            <!-- Question 1 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    How does Smart Kisaan help farmers?
+                    <span class="faq-toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    Smart Kisaan provides real-time weather updates, crop price trends, livestock management tips, and AI assistance to help farmers make informed decisions and improve productivity.
+                </div>
+            </div>
+            <!-- Question 2 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I get weather updates for my city?
+                    <span class="faq-toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! Enter your city name in the Weather Updates section to get real-time weather data, including temperature, humidity, wind speed, and more, to plan your farming activities.
+                </div>
+            </div>
+            <!-- Question 3 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    How can I contact the AI Assistant?
+                    <span class="faq-toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    Simply type your farming-related question in the AI Assistant section, and our AI will provide practical advice on crops, pests, weather impacts, and more.
+                </div>
+            </div>
+            <!-- Question 4 (New) -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    How can I improve soil health for better yields?
+                    <span class="faq-toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    To improve soil health, use organic compost, rotate crops, and avoid over-tilling. Adding cover crops like clover can also enhance soil nutrients and reduce erosion.
+                </div>
+            </div>
+            <!-- Question 5 (New) -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    What crops are best for small farms in Pakistan?
+                    <span class="faq-toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    For small farms in Pakistan, consider high-value crops like vegetables (tomatoes, onions), herbs (coriander), or fruits (mangoes). They require less space and can be sold at local markets for good profit.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Blog/News Section -->
+    <section id="blog" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 data-lang="blog-title">Latest News & Articles</h2>
+                <p class="lead" data-lang="blog-text">Stay updated with farming trends, tips, and Smart Kisaan news.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="blog-card">
+                        <img src="assets/images/blog-1.jpg" alt="Blog 1" class="img-fluid mb-3">
+                        <h5>New AI Tools for Precision Farming</h5>
+                        <p>Discover how Smart Kisaan's latest AI updates can optimize your crop management.</p>
+                        <a href="https://krishijagran.com/news/maximize-your-crop-yield-with-kissan-gpt-the-ai-chatbot-for-indian-farmers/" class="btn btn-outline-primary">Read More</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="blog-card">
+                        <img src="assets/images/blog-2.jpg" alt="Blog 2" class="img-fluid mb-3">
+                        <h5>Organic Farming Tips for 2025</h5>
+                        <p>Learn sustainable practices to boost soil health and crop quality.</p>
+                        <a href="https://www.organicnaturalfarming.com/top-5-organic-crop-farming-tips-for-a-thriving-sustainable-farm/" class="btn btn-outline-primary">Read More</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="blog-card">
+                        <img src="assets/images/blog-3.jpg" alt="Blog 3" class="img-fluid mb-3">
+                        <h5>Market Trends for Winter Crops</h5>
+                        <p>Get insights into pricing and demand for wheat, maize, and more.</p>
+                        <a href="https://www.par.com.pk/" class="btn btn-outline-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Community Section -->
+<section id="community" class="py-5">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2 data-lang="community-title">Join Our Farming Community</h2>
+            <p class="lead" data-lang="community-text">Connect with farmers, share tips, and grow together with Smart Kisaan.</p>
+        </div>
+        <div class="row g-4">
+            <!-- Discussion Threads -->
+            <div class="col-md-6">
+                <div class="community-card">
+                    <h5>Discussion Threads</h5>
+                    <ul class="community-list">
+                        <li>
+                            <a href="#" class="community-link show-auth-modal" data-form="signup">Best Irrigation Techniques</a>
+                            <p class="text-muted">Share your irrigation tips and learn from others!</p>
+                        </li>
+                        <li>
+                            <a href="#" class="community-link show-auth-modal" data-form="signup">Dealing with Wheat Rust</a>
+                            <p class="text-muted">Discuss prevention and treatment methods.</p>
+                        </li>
+                        <li>
+                            <a href="#" class="community-link show-auth-modal" data-form="signup">Organic Farming Practices</a>
+                            <p class="text-muted">Explore sustainable farming ideas.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Farmer Tips -->
+            <div class="col-md-6">
+                <div class="community-card">
+                    <h5>Farmer Tips</h5>
+                    <ul class="community-list">
+                        <li>
+                            <p>"I doubled my yield using compost and crop rotation!"</p>
+                            <p class="text-muted">— Ahmed Raza, Punjab</p>
+                        </li>
+                        <li>
+                            <p>"Planting marigolds near my crops reduced pests naturally."</p>
+                            <p class="text-muted">— Fatima Noor, Sindh</p>
+                        </li>
+                        <li>
+                            <p>"Using Smart Kisaan’s weather data, I timed my planting perfectly."</p>
+                            <p class="text-muted">— Bilal Khan, Khyber Pakhtunkhwa</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <!-- Call to Action -->
+    <div class="community-cta text-center mt-5">
+        <p>Be part of our growing community!</p>
+        <button id="join-community-btn" class="btn btn-primary">Join the Community</button>
+    </div>
+
+</section>
+
+
+<!-- Modal for Joining the Community -->
+<div id="join-community-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span id="close-join-modal" class="close">×</span>
+        <h3>Join Smart Kisaan Community</h3>
+        <form id="join-community-form">
+            <div class="form-group">
+                <label for="join-name">Name:</label>
+                <input type="text" id="join-name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="join-email">Email:</label>
+                <input type="email" id="join-email" class="form-control" required>
+            </div>
+            <button type="submit" id="submit-join-community" class="btn btn-success">Join Now</button>
+            <p id="join-error" class="text-danger d-none"></p>
+        </form>
+    </div>
+</div>
+
+    <!-- Partners Section -->
+    <section id="partners" class="py-5">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 data-lang="partners-title">Our Partners</h2>
+                <p class="lead" data-lang="partners-text">Collaborating with leading organizations to empower farmers.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-6 col-md-3 text-center">
+                    <img src="assets/images/partner-1.jpg" alt="Partner 1" class="img-fluid partner-logo">
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="assets/images/partner-2.jpg" alt="Partner 2" class="img-fluid partner-logo">
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="assets/images/partner-3.jpg" alt="Partner 3" class="img-fluid partner-logo">
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="assets/images/partner-4.jpg" alt="Partner 4" class="img-fluid partner-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Newsletter Subscription Section -->
+<section id="newsletter-section" class="py-5" style="background: linear-gradient(90deg, #28a745, #218838); color: white;">
+    <div class="container text-center">
+        <h3>Subscribe to Our Newsletter</h3>
+        <p class="lead">Get the latest farming tips, market updates, and Smart Kisaan news delivered to your inbox.</p>
+        <form id="newsletter-form" class="d-flex justify-content-center align-items-center mt-4">
+            <input type="email" id="newsletter-email" class="form-control me-2" style="max-width: 300px;" placeholder="Enter your email" required>
+            <button type="submit" id="subscribe-btn" class="btn btn-light">Subscribe</button>
+        </form>
+        <p id="newsletter-error" class="text-danger d-none mt-2"></p>
+    </div>
+</section>
+
+    <!--AI Assistant Section -->
+    <section class="ai-assistant-section" id="ai-assistant">
+        <div class="container">
+            <h2 class="text-center mb-4">AI Assistant</h2>
+            <div class="ai-chat card p-3" style="min-height: 300px; max-height: 500px; overflow-y: auto;"></div>
+            <div class="ai-input mt-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Ask about farming, crops, weather..." aria-label="AI query">
+                    <button class="btn btn-primary" type="button">Send</button>
+                </div>
+                <small class="ai-error text-danger d-none mt-2">Error fetching response. Please try again.</small>
+            </div>
+        </div>
+    </section>
+
+     <!-- AI Sidebar (Embedded Directly, No .show Class) -->
+     <div class="ai-sidebar" id="aiSidebar">
+        <div class="ai-sidebar-header">
+            <h4>AI Farming Assistant</h4>
+            <button class="btn btn-close btn-close-white" id="closeAiSidebar"></button>
+        </div>
+        <div class="ai-sidebar-body">
+            <div class="ai-chat" id="aiChat"></div>
+            <div class="ai-input">
+                <input type="text" id="aiQueryInput" placeholder="Ask about farming (e.g., crop advice, disease)...">
+                <button class="btn btn-primary" id="aiSendBtn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Login/Sign Up Section -->
+    <section id="login" class="py-5">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 data-lang="login-title">Join Smart Kisaan</h2>
+                <p class="lead" data-lang="login-text">Access personalized farming insights by logging in or signing up for a free account.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <a href="#" class="btn btn-primary btn-lg mx-2">Login</a>
+                    <a href="#" class="btn btn-outline-primary btn-lg mx-2">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- Authentication Card -->
+<div id="auth-card-container" class="auth-card-container" style="display: none;">
+    <div class="auth-card">
+        <button id="close-auth-card" class="btn btn-close"></button>
+        <!-- Login Form -->
+        <div id="login-form" class="auth-form">
+            <h3 class="text-center mb-4">Login</h3>
+            <div id="login-error" class="text-danger text-center mb-3 d-none"></div>
+            <div class="mb-3">
+                <label for="login-email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="login-email" placeholder="Enter your email">
+            </div>
+            <div class="mb-3">
+                <label for="login-password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="login-password" placeholder="Enter your password">
+            </div>
+            <button id="login-btn" class="btn btn-primary w-100 mb-3">Login</button>
+            <p class="text-center">
+                <a href="#" class="toggle-form" data-form="forgot">Forgot Password?</a> | 
+                <a href="#" class="toggle-form" data-form="signup">Sign Up</a>
+            </p>
+        </div>
+        <!-- Sign-Up Form -->
+        <div id="signup-form" class="auth-form" style="display: none;">
+            <h3 class="text-center mb-4">Sign Up</h3>
+            <div id="signup-error" class="text-danger text-center mb-3 d-none"></div>
+            <div class="mb-3">
+                <label for="signup-name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="signup-name" placeholder="Enter your name">
+            </div>
+            <div class="mb-3">
+                <label for="signup-email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="signup-email" placeholder="Enter your email">
+            </div>
+            <div class="mb-3">
+                <label for="signup-password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="signup-password" placeholder="Enter your password">
+            </div>
+            <button id="signup-btn" class="btn btn-primary w-100 mb-3">Sign Up</button>
+            <p class="text-center">
+                Already have an account? <a href="#" class="toggle-form" data-form="login">Login</a>
+            </p>
+        </div>
+        <!-- Forgot Password Form -->
+        <div id="forgot-form" class="auth-form" style="display: none;">
+            <h3 class="text-center mb-4">Forgot Password</h3>
+            <div id="forgot-error" class="text-danger text-center mb-3 d-none"></div>
+            <div class="mb-3">
+                <label for="forgot-email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="forgot-email" placeholder="Enter your email">
+            </div>
+            <button id="forgot-btn" class="btn btn-primary w-100 mb-3">Reset Password</button>
+            <p class="text-center">
+                <a href="#" class="toggle-form" data-form="login">Back to Login</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>Smart Kisaan</h5>
+                    <p data-lang="footer-text">Empowering farmers with technology and AI-driven solutions.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#market">Market Prices</a></li>
+                        <li><a href="#weather">Weather</a></li>
+                        <li><a href="#diseases">Diseases</a></li>
+                        <li><a href="#login">Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> Agriculture St, Lahore, Pakistan</li>
+                        <li><i class="fas fa-phone"></i> +92 300 1234567</li>
+                        <li><i class="fas fa-envelope"></i> info@smartkisaan.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">© 2025 Smart Kisaan. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-white me-3">Privacy Policy</a>
+                    <a href="#" class="text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<!-- JavaScript to Fetch and Display Market Data -->
+<!-- <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const marketDataList = document.getElementById('market-data-list');
+        const toggleButtons = document.querySelectorAll('.toggle-btn');
+        let currentType = 'crop';
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        let totalPages = 1;
+        let autoCycleInterval;
+    
+        // Currency conversion rate (1 INR ≈ 3.35 PKR as of April 2025)
+        const conversionRate = 3.35;
+    
+        // Fetch and Display Data
+        async function fetchMarketData(type, page) {
+            try {
+                const response = await fetch(`http://localhost:3000/api/market-prices?type=${type}&page=${page}&limit=${itemsPerPage}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch market data');
+                }
+                const result = await response.json();
+                return result;
+            } catch (error) {
+                console.error('Error fetching market data:', error);
+                marketDataList.innerHTML = '<p class="text-center text-danger">Error loading market data. Please try again later.</p>';
+                return null;
+            }
+        }
+    
+        // Display Data Function
+        function displayData(data) {
+            marketDataList.innerHTML = '';
+            if (!data || !data.data || data.data.length === 0) {
+                marketDataList.innerHTML = `<p class="text-center">No ${currentType} data available at the moment.</p>`;
+                return;
+            }
+    
+            data.data.forEach(item => {
+                let cardContent = '';
+                if (currentType === 'crop') {
+                    const trendIcon = item.trend === 'up' ? '<i class="fas fa-arrow-up text-success"></i>' :
+                                     item.trend === 'down' ? '<i class="fas fa-arrow-down text-danger"></i>' :
+                                     '<i class="fas fa-minus text-muted"></i>';
+                    const priceInPKR = (item.price_per_kg * conversionRate).toFixed(2);
+                    cardContent = `
+                        <div class="col-md-4 mb-4">
+                            <div class="card market-data-card">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">${item.name}</h5>
+                                    <p class="card-text">Price: ₨${priceInPKR}/kg ${trendIcon}</p>
+                                    <p class="card-text text-muted">Updated: ${item.last_updated}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    const priceInPKR = (item.average_price * conversionRate).toFixed(2);
+                    cardContent = `
+                        <div class="col-md-4 mb-4">
+                            <div class="card market-data-card">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">${item.type}</h5>
+                                    <p class="card-text">Avg Price: ₨${priceInPKR}</p>
+                                    <p class="card-text">Health Tip: ${item.health_tip}</p>
+                                    <p class="card-text text-muted">Updated: ${item.last_updated}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                marketDataList.innerHTML += cardContent;
+            });
+        }
+    
+        // Load Initial Data
+        async function loadData() {
+            const result = await fetchMarketData(currentType, currentPage);
+            if (result) {
+                totalPages = result.totalPages;
+                displayData(result);
+            }
+        }
+    
+        // Auto-Cycle Function
+        function startAutoCycle() {
+            clearInterval(autoCycleInterval);
+            autoCycleInterval = setInterval(async () => {
+                currentPage++;
+                if (currentPage > totalPages) {
+                    currentPage = 1; // Loop back to the first page
+                }
+                const result = await fetchMarketData(currentType, currentPage);
+                if (result) {
+                    totalPages = result.totalPages;
+                    displayData(result);
+                }
+            }, 10000); // 10 seconds
+        }
+    
+        // Toggle between Crop and Livestock
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', async () => {
+                toggleButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+    
+                currentType = button.getAttribute('data-type');
+                currentPage = 1;
+    
+                const result = await fetchMarketData(currentType, currentPage);
+                if (result) {
+                    totalPages = result.totalPages;
+                    displayData(result);
+                    startAutoCycle();
+                }
+            });
+        });
+    
+        // Initial Load
+        loadData();
+        startAutoCycle();
+    });
+    </script> -->
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+  <script src="/Modal/modal.js"></script>
+  <script src="/Ai Assistant/ai-assist.js"></script>
+</body>
+</html>

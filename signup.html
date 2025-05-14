@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Smart Kisaan</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .auth-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .auth-card h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-control {
+            border-radius: 5px;
+        }
+        .btn-primary {
+            border-radius: 5px;
+            width: 100%;
+        }
+        .auth-links {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .auth-links a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/images/logo.jpg" alt="Smart Kisaan Logo" height="50"> Smart Kisaan
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#market">Market Prices</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#weather">Weather</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#diseases">Diseases</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#ai-assistant" id="aiToggle">AI Assist</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-globe"></i> English
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item language-option" href="#" data-lang="en">English</a></li>
+                            <li><a class="dropdown-item language-option" href="#" data-lang="ur">Urdu</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle btn btn-primary text-white ms-2" href="#" id="authDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Login / Sign Up
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="authDropdown">
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="signup.html">Sign Up</a></li>
+                            <li><a class="dropdown-item" href="forgot.html">Forgot Password</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sign Up Form -->
+    <div class="auth-page">
+        <div class="auth-card">
+            <h2>Sign Up for Smart Kisaan</h2>
+            <div class="mb-3">
+                <label for="signup-name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="signup-name" placeholder="Enter your name">
+            </div>
+            <div class="mb-3">
+                <label for="signup-email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="signup-email" placeholder="Enter email">
+            </div>
+            <div class="mb-3">
+                <label for="signup-password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="signup-password" placeholder="Password">
+            </div>
+            <button type="button" class="btn btn-primary mb-3" id="signup-btn">Sign Up</button>
+            <div class="auth-links">
+                <p><a href="login.html">Already have an account? Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const signupBtn = document.getElementById('signup-btn');
+            if (signupBtn) {
+                signupBtn.addEventListener('click', () => {
+                    const name = document.getElementById('signup-name').value.trim();
+                    const email = document.getElementById('signup-email').value.trim();
+                    const password = document.getElementById('signup-password').value.trim();
+                    if (name && email && password) {
+                        alert('Sign Up successful! (Demo)');
+                        window.location.href = 'index.html';
+                    } else {
+                        alert('Please fill in all fields.');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
